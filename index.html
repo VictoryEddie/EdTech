@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdTech &ndash; Beautiful by Design. Built for Results.</title>
+  <meta name="description"
+    content="EdTech builds high-performing websites and web applications designed to captivate users and accelerate business growth." />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EdTech &ndash; Beautiful by Design. Built for Results." />
+  <meta property="og:description"
+    content="From sleek landing pages to high-performance web applications &ndash; EdTech crafts tailored digital solutions engineered to captivate users and accelerate business growth." />
+  <meta property="og:url" content="https://edtechstudio.com/" />
+  <meta property="og:image" content="https://edtechstudio.com/images/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EdTech &ndash; Beautiful by Design. Built for Results." />
+  <meta name="twitter:description"
+    content="From sleek landing pages to high-performance web applications &ndash; EdTech crafts tailored digital solutions engineered to captivate users and accelerate business growth." />
+  <meta name="twitter:image" content="https://edtechstudio.com/images/og-card.png" />
+
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Skip to content (accessibility) -->
+  <a href="#home" class="skip-to-content" id="skipLink">Skip to main content</a>
+
+  <!-- Global Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <a href="#services" class="mobile-nav-link" onclick="closeMobile()">Services</a>
+    <a href="#process" class="mobile-nav-link" onclick="closeMobile()">Process</a>
+    <a href="#work" class="mobile-nav-link" onclick="closeMobile()">Work</a>
+    <a href="#testimonials" class="mobile-nav-link" onclick="closeMobile()">Testimonials</a>
+    <a href="#contact" class="mobile-nav-link" onclick="closeMobile()">Contact</a>
+    <a href="#games" class="mobile-nav-link" onclick="closeMobile()">Games</a>
+    <a href="#contact" class="btn-primary" onclick="closeMobile()">Get a Quote</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav" aria-label="Main navigation">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-badge">E</div>
+      EdTech
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#process" class="nav-link">Process</a></li>
+      <li><a href="#work" class="nav-link">Work</a></li>
+      <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#games" class="nav-link">Games</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home" aria-label="Hero section">
+    <div class="hero-bg-orb orb-1"></div>
+    <div class="hero-bg-orb orb-2"></div>
+    <div class="hero-grid-lines"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-eyebrow fade-up">
+            <span class="eyebrow">Web Solutions Studio</span>
+          </div>
+          <h1 class="hero-title fade-up" style="animation-delay:0.1s">
+            Beautiful by Design.<br />
+            Built for <span class="gradient-text">Results</span>.
+          </h1>
+          <p class="hero-sub fade-up" style="animation-delay:0.2s">
+            From sleek landing pages to high-performance web applications &mdash; EdTech crafts tailored digital solutions
+            engineered to captivate users and accelerate business growth.
+          </p>
+          <div class="hero-actions fade-up" style="animation-delay:0.3s">
+            <a href="#contact" class="btn-primary" id="hero-cta">
+              Start a Project
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
+            <a href="#work" class="btn-ghost" id="hero-work">View Case Studies</a>
+          </div>
+          <div class="hero-stats fade-up" style="animation-delay:0.4s">
+            <div class="hero-stat">
+              <div class="hero-stat-num">+7<em>k</em></div>
+              <div class="hero-stat-label">Lines of code shipped</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">+4<em></em></div>
+              <div class="hero-stat-label">Happy client brands</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">2<em>+</em></div>
+              <div class="hero-stat-label">Years of craft</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual fade-up" style="animation-delay:0.5s">
+          <div class="hero-card">
+            <div class="hero-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <div class="hero-card-title">Project Delivery</div>
+            <div class="hero-card-sub">Client satisfaction score</div>
+            <div class="hero-card-bar">
+              <div class="hero-card-bar-fill" id="heroBar"></div>
+            </div>
+            <div style="font-size:24px;font-weight:800;color:var(--clr-orange);margin-top:12px;">98%</div>
+          </div>
+          <div class="hero-card-2">
+            <div class="hero-card-2-label">Verified Work</div>
+            <div class="hero-card-2-value">+7</div>
+            <div class="hero-card-2-sub">Live web products</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item"><span>Web Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Web Development</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>React &amp; Next.js</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Firebase &amp; Supabase</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Landing Pages</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Full-Stack Apps</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>UI/UX Architecture</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Speed Optimization</span><span class="marquee-dot"></span></div>
+      <!-- Loop duplicate -->
+      <div class="marquee-item"><span>Web Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Web Development</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>React &amp; Next.js</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Firebase &amp; Supabase</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Landing Pages</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Full-Stack Apps</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>UI/UX Architecture</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Speed Optimization</span><span class="marquee-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="section" id="services" aria-label="Services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="eyebrow">What We Do</span>
+        <h2 class="section-title">Services Built for<br />Measurable Growth</h2>
+        <p class="section-sub">Every deliverable is aligned with your commercial objectives &mdash; clean aesthetics
+          combined with conversion-focused engineering.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="svc-glow"></div>
+          <div class="svc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
+          </div>
+          <h3 class="svc-title">Web Design</h3>
+          <p class="svc-desc">Engaging, modern websites that establish instant trust. We craft tailored visual
+            identities in Figma that make your brand stand out from competitors.</p>
+          <ul class="svc-features">
+            <li class="svc-feature">Conversion-focused landing pages</li>
+            <li class="svc-feature">Design system &amp; UI token architecture</li>
+            <li class="svc-feature">Fluid responsive design for all screen sizes</li>
+            <li class="svc-feature">Dark &amp; light mode aesthetics</li>
+          </ul>
+          <div class="svc-num">01</div>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.1s">
+          <div class="svc-glow"></div>
+          <div class="svc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <h3 class="svc-title">Web Development</h3>
+          <p class="svc-desc">From lightning-fast marketing sites to complex web portals. We build using modern
+            technologies like React, Next.js, and Node.js for durability and speed.</p>
+          <ul class="svc-features">
+            <li class="svc-feature">Modern React &amp; Next.js applications</li>
+            <li class="svc-feature">Clean, scalable code architecture</li>
+            <li class="svc-feature">Database modeling &amp; security rules</li>
+            <li class="svc-feature">Third-party API integrations</li>
+          </ul>
+          <div class="svc-num">02</div>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.15s">
+          <div class="svc-glow"></div>
+          <div class="svc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path
+                d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+          </div>
+          <h3 class="svc-title">Business Websites</h3>
+          <p class="svc-desc">Complete digital homes for emerging brands and scaling businesses. Designed to tell your
+            story, capture leads, and turn visitors into paying clients.</p>
+          <ul class="svc-features">
+            <li class="svc-feature">Custom company &amp; studio showcases</li>
+            <li class="svc-feature">Built-in SEO structure &amp; OpenGraph cards</li>
+            <li class="svc-feature">Interactive lead capture funnels</li>
+            <li class="svc-feature">Sub-second loading performance</li>
+          </ul>
+          <div class="svc-num">03</div>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.2s">
+          <div class="svc-glow"></div>
+          <div class="svc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3 class="svc-title">Maintenance &amp; Support</h3>
+          <p class="svc-desc">Software is an ongoing asset. We partner with you through monthly retainers to handle
+            updates, feature requests, monitoring, and continuous improvements.</p>
+          <ul class="svc-features">
+            <li class="svc-feature">Dedicated monthly retainer packages</li>
+            <li class="svc-feature">Proactive performance &amp; uptime audits</li>
+            <li class="svc-feature">Continuous feature and content updates</li>
+            <li class="svc-feature">Zero-downtime deployments</li>
+          </ul>
+          <div class="svc-num">04</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process-section" id="process" aria-label="Process">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <span class="eyebrow">How We Work</span>
+        <h2 class="section-title">A Simple, Transparent 4-Step Process</h2>
+        <p class="section-sub">No confusion, no unnecessary meetings. Just a clear roadmap from vision to live product.
+        </p>
+      </div>
+      <div class="process-grid">
+        <div class="process-connector"></div>
+        <div class="process-step fade-up">
+          <div class="process-num">01</div>
+          <h3 class="process-step-title">Discovery</h3>
+          <p class="process-step-desc">We clarify your business goals, target audience, and key performance metrics
+            before writing a single line of code.</p>
+        </div>
+        <div class="process-step fade-up" style="transition-delay:0.1s">
+          <div class="process-num">02</div>
+          <h3 class="process-step-title">Design</h3>
+          <p class="process-step-desc">We prototype the complete aesthetic and user flows in Figma so you see exactly
+            how the product will look and feel.</p>
+        </div>
+        <div class="process-step fade-up" style="transition-delay:0.2s">
+          <div class="process-num">03</div>
+          <h3 class="process-step-title">Build</h3>
+          <p class="process-step-desc">We engineer the product with clean standards, fluid animations, robust security,
+            and responsive layouts.</p>
+        </div>
+        <div class="process-step fade-up" style="transition-delay:0.3s">
+          <div class="process-num">04</div>
+          <h3 class="process-step-title">Launch</h3>
+          <p class="process-step-desc">We run end-to-end audits, deploy to production, hand over all assets, and provide
+            post-launch support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Work -->
+  <section class="section" id="work" aria-label="Selected Projects">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="eyebrow">Selected Work</span>
+        <h2 class="section-title">Recent Client Projects</h2>
+        <p class="section-sub">Proven implementations built with attention to design, speed, and real-world utility.</p>
+      </div>
+      <div class="work-filter fade-up" style="transition-delay:0.05s">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+        <button class="filter-btn" data-filter="landing-page" id="filter-landing">Landing Pages</button>
+        <button class="filter-btn" data-filter="business-site" id="filter-business">Business Sites</button>
+      </div>
+      <div class="work-grid" id="workGrid">
+        <a href="https://edu-results.vercel.app/" target="_blank" rel="noopener" class="work-card fade-up"
+          data-category="business-site">
+          <div class="work-img-wrap">
+            <img src="./images/eduResults.png" alt="Edu Results Portal" loading="lazy" decoding="async" width="1356" height="592" />
+            <div class="work-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-tag">Web Application</div>
+            <div class="work-title">Edu Results</div>
+          </div>
+        </a>
+        <a href="https://flavour-index.vercel.app/" target="_blank" rel="noopener" class="work-card fade-up"
+          data-category="landing-page" style="transition-delay:0.1s">
+          <div class="work-img-wrap">
+            <img src="./images/flavour-index.png" alt="Flavour Index Platform" loading="lazy" decoding="async" width="1348" height="588" />
+            <div class="work-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-tag">Web Design</div>
+            <div class="work-title">Flavour Index</div>
+          </div>
+        </a>
+        <a href="https://olive-extraordinaire.vercel.app/" target="_blank" rel="noopener" class="work-card fade-up"
+          data-category="landing-page" style="transition-delay:0.2s">
+          <div class="work-img-wrap">
+            <img src="./images/extraordinaire.png" alt="Olive Extraordinaire" loading="lazy" decoding="async" width="1350" height="594" />
+            <div class="work-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-tag">Web Design</div>
+            <div class="work-title">Olive Extraordinaire</div>
+          </div>
+        </a>
+        <a href="https://mood-cafe-eight.vercel.app/" target="_blank" rel="noopener" class="work-card fade-up"
+          data-category="landing-page" style="transition-delay:0.05s">
+          <div class="work-img-wrap">
+            <img src="./images/MoodScreenGrab.png" alt="Mood. Cafe Experience" loading="lazy" decoding="async" width="1356" height="603" />
+            <div class="work-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-tag">Web Design</div>
+            <div class="work-title">Mood. Cafe</div>
+          </div>
+        </a>
+        <a href="https://cafe-noir-sigma.vercel.app/" target="_blank" rel="noopener" class="work-card fade-up"
+          data-category="landing-page" style="transition-delay:0.15s">
+          <div class="work-img-wrap">
+            <img src="./images/NoirScreenGrab.png" alt="Cafe Noir Website" loading="lazy" decoding="async" width="1358" height="601" />
+            <div class="work-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-tag">Web Design</div>
+            <div class="work-title">Cafe Noir.</div>
+          </div>
+        </a>
+        <a href="https://term-of-services.vercel.app/" target="_blank" rel="noopener" class="work-card fade-up"
+          data-category="business-site" style="transition-delay:0.25s">
+          <div class="work-img-wrap">
+            <img src="./images/TermsOfService.png" alt="Terms of Service Web App" loading="lazy" decoding="async" width="1365" height="593" />
+            <div class="work-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-tag">Web Development</div>
+            <div class="work-title">Terms of Service</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials-section" id="testimonials" aria-label="Testimonials">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <span class="eyebrow">Client Feedback</span>
+        <h2 class="section-title">Endorsed by Businesses</h2>
+        <p class="section-sub">Direct feedback from companies who trusted us with their digital products.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card fade-up">
+          <div class="t-stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <p class="t-text">"EdTech delivered an assessment platform that revolutionized how our school ecosystem
+            manages student term assessments. Outstanding execution and rapid response times."</p>
+          <div class="t-author">
+            <div class="t-avatar"><img src="./images/skillBoost.jpeg" alt="SkillBoost Africa" decoding="async" width="46" height="46" /></div>
+            <div>
+              <div class="t-name">SkillBoost Africa</div>
+              <div class="t-role">Education Technology Platform</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card fade-up" style="transition-delay:0.1s">
+          <div class="t-stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <p class="t-text">"Working with EdTech gave our company a modern presence that matches our enterprise
+            services. Highly professional, technical, and always communicative."</p>
+          <div class="t-author">
+            <div class="t-avatar"><img src="./images/Accentra.jpeg" alt="Accentra Marine" decoding="async" width="46" height="46" /></div>
+            <div>
+              <div class="t-name">Accentra Marine Co. Ltd.</div>
+              <div class="t-role">Marine Logistics &amp; Services</div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card fade-up" style="transition-delay:0.2s">
+          <div class="t-stars">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <p class="t-text">"The aesthetic direction and fluidity of the final build exceeded all expectations. Our
+            clients comment on our website constantly. True craftsmanship."</p>
+          <div class="t-author">
+            <div class="t-avatar">O</div>
+            <div>
+              <div class="t-name">Olive Extraordinaire</div>
+              <div class="t-role">Premium Lifestyle Brand</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-inner fade-up">
+        <div class="cta-glow"></div>
+        <h2 class="cta-title">
+          Ready to Build<br />
+          Something <span style="color:var(--clr-orange)">Exceptional?</span>
+        </h2>
+        <p class="cta-sub">Let's turn your concept into a fast, revenue-driving digital product. Transparent quotes with
+          zero obligation.</p>
+        <div class="cta-actions">
+          <a href="#contact" class="btn-primary" id="cta-quote">
+            Get a Free Quote
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
+          <a href="mailto:viceddie124@gmail.com" class="btn-ghost" id="cta-email">Email Directly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact" aria-label="Contact">
+    <div class="container">
+      <div class="contact-layout">
+        <div>
+          <span class="eyebrow fade-up">Let's Connect</span>
+          <h2 class="contact-title fade-up" style="transition-delay:0.1s">
+            Start Your<br />
+            <span style="color:var(--clr-orange)">Project</span> Today
+          </h2>
+          <p class="contact-desc fade-up" style="transition-delay:0.15s">
+            Tell us about your objectives and timeline. We will analyze your requirements and provide a strategic
+            proposal within 24 hours.
+          </p>
+          <div class="contact-detail fade-up" style="transition-delay:0.2s">
+            <div class="contact-detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Direct Email</div>
+              <div class="contact-detail-value">viceddie124@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-detail fade-up" style="transition-delay:0.25s">
+            <div class="contact-detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Twitter / X</div>
+              <div class="contact-detail-value">@edwin_trades</div>
+            </div>
+          </div>
+          <div class="contact-detail fade-up" style="transition-delay:0.3s">
+            <div class="contact-detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">SLA Guarantee</div>
+              <div class="contact-detail-value">Response within 24 hours</div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form fade-up" id="contactForm" autocomplete="off" style="transition-delay:0.2s">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Your Name</label>
+              <input type="text" id="c-name" name="name" placeholder="Ejike Victory" required aria-required="true" />
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address</label>
+              <input type="email" id="c-email" name="email" placeholder="client@company.com" required aria-required="true" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-service">Service Desired</label>
+            <select id="c-service" name="service" required aria-required="true">
+              <option value="" disabled selected>Select service</option>
+              <option value="web-design">Web Design &amp; UI Prototyping</option>
+              <option value="web-dev">Full-Stack Web Development</option>
+              <option value="business-site">Business Marketing Website</option>
+              <option value="web-app">SaaS / Web Application</option>
+              <option value="maintenance">Monthly Retainer &amp; Support</option>
+              <option value="other">Other Digital Solution</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="c-budget">Project Budget (USD)</label>
+            <select id="c-budget" name="budget" required aria-required="true">
+              <option value="" disabled selected>Select estimated budget</option>
+              <option value="under-500">Under $500</option>
+              <option value="500-1k">$500 &ndash; $1,000</option>
+              <option value="1k-5k">$1,000 &ndash; $5,000</option>
+              <option value="5k-plus">$5,000+</option>
+            </select>
+            <p class="form-microcopy">No commitment needed &mdash; this helps us match the right package.</p>
+          </div>
+          <div class="form-group">
+            <label for="c-message">Project Overview</label>
+            <textarea id="c-message" name="message"
+              placeholder="Briefly describe your goals, desired timeline, or any reference sites..."
+              required aria-required="true"></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">Send Project Details</button>
+          <p class="form-privacy">&#128274; 100% Privacy. We will never share your information or send spam.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Games Section -->
+  <section class="games-section" id="games" aria-label="Mini Games">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <span class="eyebrow">Take a Break</span>
+        <h2 class="section-title">Play a Quick Game</h2>
+        <p class="section-sub">We build things that work &mdash; including these. Four browser games, zero downloads,
+          built purely in code.</p>
+      </div>
+      <div class="games-grid">
+
+        <!-- SNAKE -->
+        <div class="game-card fade-up" id="snakeCard">
+          <div class="game-header">
+            <div class="game-title-row">
+              <div class="game-icon">&#127822;</div>
+              <div>
+                <div class="game-name">Snake</div>
+                <div class="game-badge">Arrow Keys &bull; WASD</div>
+              </div>
+            </div>
+            <div class="game-score-display">
+              <div class="game-score-label">Score</div>
+              <div class="game-score-val" id="snakeScore">0</div>
+            </div>
+          </div>
+          <div class="game-body">
+            <div class="game-canvas-wrap" style="aspect-ratio:1">
+              <canvas id="snakeCanvas" width="320" height="320"></canvas>
+            </div>
+            <div class="game-controls">
+              <button class="game-btn" id="snakeStart" onclick="snakeStartGame()">Start Game</button>
+              <span class="game-status" id="snakeStatus">Press Start to play</span>
+            </div>
+            <div class="mobile-dpad" id="snakeDpad">
+              <button class="dpad-btn" type="button" aria-label="Up" onclick="snakeSetDir(0, -1)">▲</button>
+              <div class="dpad-row">
+                <button class="dpad-btn" type="button" aria-label="Left" onclick="snakeSetDir(-1, 0)">◀</button>
+                <button class="dpad-btn" type="button" aria-label="Down" onclick="snakeSetDir(0, 1)">▼</button>
+                <button class="dpad-btn" type="button" aria-label="Right" onclick="snakeSetDir(1, 0)">▶</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEMORY MATCH -->
+        <div class="game-card fade-up" id="memCard" style="transition-delay:0.1s">
+          <div class="game-header">
+            <div class="game-title-row">
+              <div class="game-icon">&#129504;</div>
+              <div>
+                <div class="game-name">Memory Match</div>
+                <div class="game-badge">Click to flip cards</div>
+              </div>
+            </div>
+            <div class="game-score-display">
+              <div class="game-score-label">Pairs</div>
+              <div class="game-score-val" id="memScore">0/8</div>
+            </div>
+          </div>
+          <div class="game-body">
+            <div class="memory-grid" id="memoryGrid"></div>
+            <div class="game-controls">
+              <button class="game-btn" id="memStart" onclick="memStartGame()">New Game</button>
+              <span class="game-status" id="memStatus">Find all matching pairs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TYPING SPEED TEST -->
+        <div class="game-card fade-up" id="typingCard" style="transition-delay:0.15s">
+          <div class="game-header">
+            <div class="game-title-row">
+              <div class="game-icon">&#9000;</div>
+              <div>
+                <div class="game-name">Typing Speed</div>
+                <div class="game-badge">60 second test</div>
+              </div>
+            </div>
+            <div class="game-score-display">
+              <div class="game-score-label">WPM</div>
+              <div class="game-score-val" id="typingWpm">0</div>
+            </div>
+          </div>
+          <div class="game-body">
+            <div class="typing-stats">
+              <div class="typing-stat">
+                <div class="typing-stat-val" id="typingTime">60</div>
+                <div class="typing-stat-label">Seconds</div>
+              </div>
+              <div class="typing-stat">
+                <div class="typing-stat-val" id="typingAcc">100</div>
+                <div class="typing-stat-label">Accuracy %</div>
+              </div>
+              <div class="typing-stat">
+                <div class="typing-stat-val" id="typingChars">0</div>
+                <div class="typing-stat-label">Characters</div>
+              </div>
+            </div>
+            <div class="typing-prompt" id="typingPrompt">Click Start to begin the typing test.</div>
+            <input class="typing-input" id="typingInput" type="text" placeholder="Start typing here..."
+              autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" disabled />
+            <div class="game-controls">
+              <button class="game-btn" id="typingStartBtn" onclick="typingStart()">Start Test</button>
+              <button class="game-btn secondary" id="typingResetBtn" onclick="typingReset()">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2048 -->
+        <div class="game-card fade-up" id="g2048Card" style="transition-delay:0.2s">
+          <div class="game-header">
+            <div class="game-title-row">
+              <div class="game-icon">&#127922;</div>
+              <div>
+                <div class="game-name">2048</div>
+                <div class="game-badge">Arrow Keys &bull; Swipe</div>
+              </div>
+            </div>
+            <div class="game-score-display">
+              <div class="game-score-label">Score</div>
+              <div class="game-score-val" id="g2048Score">0</div>
+            </div>
+          </div>
+          <div class="game-body">
+            <div class="g2048-grid" id="g2048Grid"></div>
+            <div class="game-controls">
+              <button class="game-btn" id="g2048Start" onclick="g2048Init()">New Game</button>
+              <span class="game-status" id="g2048Status">Merge tiles to reach 2048</span>
+            </div>
+            <div class="mobile-dpad" id="g2048Dpad">
+              <button class="dpad-btn" type="button" aria-label="Up" onclick="g2048Move('up')">▲</button>
+              <div class="dpad-row">
+                <button class="dpad-btn" type="button" aria-label="Left" onclick="g2048Move('left')">◀</button>
+                <button class="dpad-btn" type="button" aria-label="Down" onclick="g2048Move('down')">▼</button>
+                <button class="dpad-btn" type="button" aria-label="Right" onclick="g2048Move('right')">▶</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <div class="footer-logo-badge">E</div>
+      EdTech
+    </div>
+    <ul class="footer-links">
+      <li><a href="#services" class="footer-link">Services</a></li>
+      <li><a href="#process" class="footer-link">Process</a></li>
+      <li><a href="#work" class="footer-link">Work</a></li>
+      <li><a href="https://victory-edwin.vercel.app" target="_blank" rel="noopener" class="footer-link">Founder
+          Portfolio</a></li>
+      <li><a href="#contact" class="footer-link">Contact</a></li>
+      <li><a href="#games" class="footer-link">Games</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 EdTech. Engineered by <a href="https://victory-edwin.vercel.app" target="_blank"
+        rel="noopener" style="color:var(--clr-orange)">Victory Edwin</a>.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
