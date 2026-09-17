@@ -36,6 +36,6 @@ This checklist documents all audit enhancements to make the EdTech agency websit
 - [x] Add a keyboard-navigable "Skip to content" link styled for accessibility.
 
 ### 7. 🚀 Deployment & Domain Strategy
-- [ ] Push to GitHub repository.
+- [x] Push to GitHub repository (https://github.com/VictoryEddie/EdTech.git).
 - [ ] Deploy to Vercel or Netlify.
 - [ ] Connect custom domain (e.g. `edtechstudio.com`, `edtech.co`, or `edtechagency.com`).
