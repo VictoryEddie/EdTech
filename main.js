@@ -1,5 +1,45 @@
 // EdTech - Global Toast System & Interactive Logic
 
+/* ─────────────────────────────────────────────────────────────
+   PORTFOLIO RENDERER — reads from projects.js (PROJECTS array)
+   Add / edit / remove projects there. No HTML changes needed.
+   ───────────────────────────────────────────────────────────── */
+(function renderProjects() {
+  const grid = document.getElementById('workGrid');
+  if (!grid || typeof PROJECTS === 'undefined' || !PROJECTS.length) return;
+
+  const arrowSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <line x1="7" y1="17" x2="17" y2="7"/>
+      <polyline points="7 7 17 7 17 17"/>
+    </svg>`;
+
+  grid.innerHTML = PROJECTS.map((p, i) => {
+    const delay = i === 0 ? '' : `style="transition-delay:${(i * 0.1).toFixed(1)}s"`;
+    return `
+      <a href="${p.url}" target="_blank" rel="noopener"
+         class="work-card fade-up" data-category="${p.category}" ${delay}>
+        <div class="work-img-wrap">
+          <img src="${p.image}" alt="${p.alt}" loading="lazy" decoding="async" />
+          <div class="work-overlay">${arrowSVG}</div>
+        </div>
+        <div class="work-info">
+          <div class="work-tag">${p.tag}</div>
+          <div class="work-title">${p.title}</div>
+        </div>
+      </a>`;
+  }).join('');
+
+  // Re-observe newly created cards for fade-up animation.
+  // Deferred so revealObserver (defined later in main.js) is ready.
+  setTimeout(() => {
+    if (typeof revealObserver !== 'undefined') {
+      grid.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
+    }
+  }, 0);
+})();
+
 function showToast(title, message, type = 'info', duration = 4500) {
   let container = document.getElementById('toastContainer');
   if (!container) {
@@ -112,21 +152,52 @@ if (heroBar) {
   }, 450);
 }
 
-// EmailJS Configuration
-const EMAILJS_PUBLIC_KEY = 'hvJxZu9tebkJrh45Y';
-const EMAILJS_RECIPIENT = 'viceddie124@gmail.com';
+// ─────────────────────────────────────────────────────────────
+// SECURE CONTACT FORM HANDLER (3-Tier Defense & FormSubmit AJAX)
+// ─────────────────────────────────────────────────────────────
+const RECIPIENT_EMAIL = 'viceddie124@gmail.com';
 
-if (window.emailjs) {
-  try {
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  } catch (err) {
-    console.warn('EmailJS initialization note:', err);
-  }
+const ALLOWED_SERVICES = {
+  'web-design': 'Web Design & UI Prototyping',
+  'web-dev': 'Full-Stack Web Development',
+  'business-site': 'Business Marketing Website',
+  'web-app': 'SaaS / Web Application',
+  'maintenance': 'Monthly Retainer & Support',
+  'other': 'Other Digital Solution'
+};
+
+const ALLOWED_BUDGETS = {
+  'under-500': 'Under $500',
+  '500-1k': '$500 – $1,000',
+  '1k-5k': '$1,000 – $5,000',
+  '5k-plus': '$5,000+'
+};
+
+// Input Sanitizer: Strips HTML tags and encodes risky entities
+function sanitizeInput(str) {
+  if (typeof str !== 'string') return '';
+  return str
+    .replace(/<[^>]*>?/gm, '') // Strip HTML tags
+    .replace(/[&<>"']/g, char => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[char] || char))
+    .trim();
 }
 
-// Contact Form Handler with Validation, EmailJS & Offline Fallback
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
+  // Tier 2 Anti-Bot: Timestamp Speed Trap (Records first human interaction)
+  let firstInteractionTime = 0;
+  const recordInteraction = () => {
+    if (!firstInteractionTime) firstInteractionTime = Date.now();
+  };
+  contactForm.addEventListener('focusin', recordInteraction, { once: true });
+  contactForm.addEventListener('keydown', recordInteraction, { once: true });
+
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -135,92 +206,216 @@ if (contactForm) {
     const serviceInput = document.getElementById('c-service');
     const budgetInput = document.getElementById('c-budget');
     const messageInput = document.getElementById('c-message');
+    const honeypotInput = document.getElementById('c-honeypot');
     const submitBtn = document.getElementById('submitBtn');
 
-    const name = nameInput ? nameInput.value.trim() : '';
-    const email = emailInput ? emailInput.value.trim() : '';
-    const service = serviceInput ? serviceInput.value : '';
-    const budget = budgetInput ? budgetInput.value : '';
-    const message = messageInput ? messageInput.value.trim() : '';
+    // ── Tier 2 Defense: Honeypot check (Bots fill hidden fields) ──
+    if (honeypotInput && honeypotInput.value.trim().length > 0) {
+      // Silently discard bot submission while returning fake success
+      contactForm.reset();
+      showToast('Project Inquiry Received! 🚀', 'Your inquiry has been logged successfully.', 'success');
+      return;
+    }
 
-    if (!name || !email || !service || !budget || !message) {
+    // ── Tier 2 Defense: Timestamp Speed Trap (Human typists take > 3.5s) ──
+    const elapsedSeconds = firstInteractionTime ? (Date.now() - firstInteractionTime) / 1000 : 0;
+    if (firstInteractionTime && elapsedSeconds < 3.2) {
+      showToast('Action Flagged', 'Submission was too fast. Please take a moment to review your details.', 'warning');
+      return;
+    }
+
+    // ── Tier 1 Defense: Client Submission Cooldown (60s Rate Limit) ──
+    const lastSubmission = sessionStorage.getItem('edtech_form_cooldown');
+    if (lastSubmission) {
+      const secondsSince = (Date.now() - parseInt(lastSubmission, 10)) / 1000;
+      if (secondsSince < 60) {
+        const waitTime = Math.ceil(60 - secondsSince);
+        showToast('Please Wait', `You recently sent a message. Please wait ${waitTime}s before sending another.`, 'warning');
+        return;
+      }
+    }
+
+    // ── Tier 1 Defense: Sanitize & Validate Inputs ──
+    const rawName = nameInput ? nameInput.value : '';
+    const rawEmail = emailInput ? emailInput.value : '';
+    const serviceKey = serviceInput ? serviceInput.value : '';
+    const budgetKey = budgetInput ? budgetInput.value : '';
+    const rawMessage = messageInput ? messageInput.value : '';
+
+    const name = sanitizeInput(rawName);
+    const email = rawEmail.trim().toLowerCase();
+    const message = sanitizeInput(rawMessage);
+
+    // Empty fields check
+    if (!name || !email || !serviceKey || !budgetKey || !message) {
       showToast('Missing Fields', 'Please complete all required fields.', 'error');
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      showToast('Invalid Email', 'Please enter a valid email address.', 'error');
+    // Length boundaries
+    if (name.length < 2 || name.length > 60) {
+      showToast('Invalid Name', 'Name must be between 2 and 60 characters.', 'error');
       return;
     }
 
-    const originalText = submitBtn ? submitBtn.textContent : 'Send Project Details';
+    if (message.length < 10 || message.length > 3000) {
+      showToast('Invalid Message', 'Project overview must be between 10 and 3,000 characters.', 'error');
+      return;
+    }
+
+    // Email syntax validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(email) || email.length > 100) {
+      showToast('Invalid Email', 'Please enter a valid, active email address.', 'error');
+      return;
+    }
+
+    // Dropdown Whitelist Validation
+    if (!ALLOWED_SERVICES[serviceKey]) {
+      showToast('Invalid Service', 'Please select a valid service option from the list.', 'error');
+      return;
+    }
+
+    if (!ALLOWED_BUDGETS[budgetKey]) {
+      showToast('Invalid Budget', 'Please select an estimated budget from the list.', 'error');
+      return;
+    }
+
+    const serviceName = ALLOWED_SERVICES[serviceKey];
+    const budgetName = ALLOWED_BUDGETS[budgetKey];
+
+    // Trigger Mailto Fallback if network drops
+    const triggerMailtoFallback = () => {
+      const subject = encodeURIComponent(`Project Inquiry: ${name} (${serviceName})`);
+      const body = encodeURIComponent(
+        `Hi EdTech,\n\nName: ${name}\nEmail: ${email}\nService: ${serviceName}\nBudget: ${budgetName}\n\nProject Overview:\n${rawMessage}`
+      );
+      window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`;
+    };
+
+    if (!navigator.onLine) {
+      showToast('Offline Mode', 'Network is offline. Opening your email application...', 'info', 6000);
+      triggerMailtoFallback();
+      return;
+    }
+
+    // Button loading state
+    const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Project Details';
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending Details...';
     }
 
-    const templateParams = {
-      from_name: name,
-      from_email: email,
-      service: service,
-      budget: budget,
-      message: message,
-      reply_to: email,
-      to_email: EMAILJS_RECIPIENT
-    };
-
-    const triggerMailtoFallback = () => {
-      const subject = encodeURIComponent(`Project Inquiry: ${name} (${service})`);
-      const body = encodeURIComponent(
-        `Hi EdTech,\n\nName: ${name}\nEmail: ${email}\nService: ${service}\nBudget: ${budget}\n\nProject Overview:\n${message}`
-      );
-      window.location.href = `mailto:${EMAILJS_RECIPIENT}?subject=${subject}&body=${body}`;
-    };
-
-    // Graceful offline fallback
-    if (!navigator.onLine) {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      }
-      showToast('Offline Mode', 'Network connection offline. Opening your email app to send directly...', 'info', 6000);
-      triggerMailtoFallback();
-      return;
-    }
-
+    // ── Tier 3 Defense & Delivery: FormSubmit AJAX ──
     try {
-      if (window.emailjs) {
-        // Attempt sending via EmailJS
-        await emailjs.send('service_default', 'template_default', templateParams).catch(async () => {
-          return await emailjs.sendForm('service_contact', 'template_contact', contactForm);
-        });
-      }
+      const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          service: serviceName,
+          budget: budgetName,
+          message: message,
+          _subject: `New Project Inquiry from ${name} (${serviceName})`,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
 
-      contactForm.reset();
-      showToast(
-        'Project Inquiry Received! 🚀',
-        `Thank you ${name}! Your inquiry has been routed to ${EMAILJS_RECIPIENT}. We will contact you within 24 hours.`,
-        'success',
-        6500
-      );
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        // Enforce cooldown in sessionStorage
+        sessionStorage.setItem('edtech_form_cooldown', Date.now().toString());
+        firstInteractionTime = 0; // reset speed trap
+
+        contactForm.reset();
+        showToast(
+          'Project Inquiry Received! 🚀',
+          `Thank you ${name}! Your inquiry has been sent to our team. We will review it and reply within 24 hours.`,
+          'success',
+          7000
+        );
+      } else if (data.message && data.message.toLowerCase().includes('activation')) {
+        showToast(
+          'Activation Email Sent! 📩',
+          'FormSubmit sent a 1-time activation link to viceddie124@gmail.com. Click "Activate Form" in that email once to start receiving submissions!',
+          'info',
+          9000
+        );
+      } else if (window.location.protocol === 'file:') {
+        showToast(
+          'Local Preview Detected',
+          'FormSubmit requires a web server (http://localhost or live URL) rather than double-clicking HTML files.',
+          'warning',
+          7000
+        );
+        triggerMailtoFallback();
+      } else {
+        throw new Error(data.message || 'FormSubmit response error');
+      }
     } catch (err) {
-      console.warn('EmailJS forwarding note:', err);
-      showToast(
-        'Inquiry Forwarded',
-        'Direct connection queued. Opening your mail app to guarantee delivery...',
-        'info',
-        5500
-      );
-      triggerMailtoFallback();
+      console.warn('Form submission delivery notice:', err);
+      if (window.location.protocol !== 'file:') {
+        showToast(
+          'Connecting Direct...',
+          'Opening your email app to guarantee your message is delivered directly...',
+          'info',
+          6000
+        );
+        triggerMailtoFallback();
+      }
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
+        submitBtn.textContent = originalBtnText;
       }
     }
   });
 }
+
+/* ─────────────────────────────────────────────────────────────
+   PORTFOLIO FILTER TABS
+   ───────────────────────────────────────────────────────────── */
+(function () {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const workCards  = document.querySelectorAll('#workGrid .work-card');
+
+  if (!filterBtns.length || !workCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // Update active tab
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Show / hide cards
+      workCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        if (match) {
+          card.style.display = '';
+          card.style.opacity = '1';
+          card.style.transform = '';
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          // Short delay so the fade plays before display:none
+          setTimeout(() => {
+            if (card.dataset.category !== filter && btn.dataset.filter !== 'all') {
+              card.style.display = 'none';
+            }
+          }, 280);
+        }
+      });
+    });
+  });
+})();
 
 /* ─────────────────────────────────────────────────────────────
    INTERACTIVE MINI-GAMES ENGINE

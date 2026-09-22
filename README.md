@@ -1,4 +1,4 @@
-# 🚀 EdTech — Web Solutions Studio
+# 🚀 EdTech - Web Solutions Studio
 
 A high-converting, modern web solutions studio landing page engineered for performance, conversion, and visual craft. Built with vanilla web standards, featuring an interactive mini-games engine, lead routing, and search engine optimization.
 

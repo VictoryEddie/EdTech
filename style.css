@@ -137,13 +137,12 @@ button { cursor: pointer; font-family: var(--font); border: none; background: no
   letter-spacing: -0.03em;
 }
 .nav-logo-badge {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  background: var(--clr-orange);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 15px; font-weight: 900;
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(255, 108, 56, 0.4);
+  height: 28px;
+  width: auto;
+  max-width: 48px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(255, 108, 56, 0.35));
 }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-link {
@@ -601,6 +600,38 @@ button { cursor: pointer; font-family: var(--font); border: none; background: no
 }
 
 /* ─── WORK ────────────────────────────────────────────────── */
+.work-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.filter-btn {
+  padding: 9px 22px;
+  border-radius: 100px;
+  border: 1px solid var(--clr-border);
+  background: transparent;
+  color: var(--clr-muted);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.filter-btn:hover {
+  border-color: var(--clr-orange);
+  color: var(--clr-orange);
+  background: var(--clr-orange-dim);
+}
+.filter-btn.active {
+  background: var(--clr-orange);
+  border-color: var(--clr-orange);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 108, 56, 0.35);
+}
+
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -611,7 +642,7 @@ button { cursor: pointer; font-family: var(--font); border: none; background: no
   overflow: hidden;
   border: 1px solid var(--clr-border);
   background: var(--clr-card);
-  transition: all var(--transition);
+  transition: all var(--transition), opacity 0.28s ease, transform 0.28s ease;
   display: block;
 }
 .work-card:hover {
@@ -858,31 +889,44 @@ button { cursor: pointer; font-family: var(--font); border: none; background: no
   padding: 48px;
   border-top: 1px solid var(--clr-border);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 24px;
 }
 .footer-logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 150px;
   font-weight: 900;
   letter-spacing: -0.03em;
+  line-height: 0.95;
 }
 .footer-logo-badge {
-  width: 28px; height: 28px;
-  border-radius: 7px;
-  background: var(--clr-orange);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 900;
-  color: #fff;
+  height: 72px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 16px rgba(255, 108, 56, 0.4));
 }
-.footer-links { display: flex; gap: 28px; }
+.footer-links { 
+  display: flex; 
+  gap: 28px; 
+  align-self: flex-end;
+  padding-bottom: 8px;
+  flex-wrap: wrap;
+}
 .footer-link { font-size: 13px; color: var(--clr-muted); transition: color var(--transition); }
 .footer-link:hover { color: var(--clr-text); }
-.footer-copy { font-size: 13px; color: var(--clr-dimmer); }
+.footer-copy { 
+  width: 100%;
+  text-align: center;
+  font-size: 13px; 
+  color: var(--clr-dimmer); 
+  margin-top: 32px;
+}
 
 /* ─── TOAST NOTIFICATION SYSTEM ─────────────────────────── */
 .toast-container {
@@ -1379,8 +1423,10 @@ button { cursor: pointer; font-family: var(--font); border: none; background: no
   .process-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .cta-inner { padding: 52px 28px; }
-  .footer { flex-direction: column; text-align: center; padding: 32px 24px; }
-  .footer-links { justify-content: center; }
+  .footer { flex-direction: column; text-align: center; padding: 32px 24px; align-items: center; }
+  .footer-logo { font-size: clamp(44px, 12vw, 80px); justify-content: center; }
+  .footer-logo-badge { height: 44px; }
+  .footer-links { justify-content: center; align-self: center; }
   .game-card { padding: 20px; }
 
   /* Mobile Virtual D-Pad Controls */
